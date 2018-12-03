@@ -1,0 +1,32 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://scripts/Formation.gd" type="Script" id=1]
+[ext_resource path="res://scenes/Enemy.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scenes/EnemyProjectile.tscn" type="PackedScene" id=3]
+
+[node name="Formation" type="Node2D"]
+
+script = ExtResource( 1 )
+speed = 200
+
+[node name="Enemy" parent="." index="0" instance=ExtResource( 2 )]
+
+projectile = ExtResource( 3 )
+
+[node name="Enemy2" parent="." index="1" instance=ExtResource( 2 )]
+
+position = Vector2( -128, -128 )
+projectile = ExtResource( 3 )
+
+[node name="Enemy3" parent="." index="2" instance=ExtResource( 2 )]
+
+position = Vector2( 128, -128 )
+projectile = ExtResource( 3 )
+
+[connection signal="was_defeated" from="Enemy" to="." method="_on_Enemy_was_defeated"]
+
+[connection signal="was_defeated" from="Enemy2" to="." method="_on_Enemy_was_defeated"]
+
+[connection signal="was_defeated" from="Enemy3" to="." method="_on_Enemy_was_defeated"]
+
+
